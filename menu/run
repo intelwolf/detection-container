@@ -6,7 +6,7 @@ show_menu(){
     fggreen=`echo "\e[92m"`
     fgred=`echo "\033[31m"`
     
-    version="1.7"
+    version="1.8"
 
     mitems=(
            "Medium - Defense Evasion via Masquerading"
@@ -18,6 +18,9 @@ show_menu(){
            "High - Credential Access via Credential Dumping"
            "High -$fggreen Persistance via External Remote Services"
            "High -$fggreen Malware Linux Trojan"
+           "High -$fggreen Webserver Suspicious Terminal Spawn"
+           "High -$fggreen Webserver Unexpected Child of Web Service"
+           "Medium - Webserver Trigger Metasploit Payload"
            )
 
     edir='/home/eval/bin/'
@@ -29,9 +32,12 @@ show_menu(){
            "Exfiltration_via_Exfiltration_Over_Alternative_Protocol.sh > /dev/null 2>&1"
            "Command_Control_via_Remote_Access.sh"
            "Collection_via_Automated_Collection.sh"
-	   "Credential_Access_via_Credential_Dumping.sh" 
-	   "Persistence_via_External_Remote_Services.sh"
+           "Credential_Access_via_Credential_Dumping.sh" 
+           "Persistence_via_External_Remote_Services.sh"
            "Malware_Linux_Trojan.sh"
+           "Webserver_Suspicious_Terminal_Spawn.sh"
+           "Webserver_Unexpected_Child_of_Web_Service.sh"
+           "Webserver_Trigger_Metasploit_Payload.sh"
            )
     numitems=${#mitems[@]}
 
@@ -73,17 +79,34 @@ clear
 show_menu
 while  true
     do
+        # Check to see if our value is a number
+        if [ -n "$opt" ] && [ "$opt" -eq "$opt" ] 2>/dev/null; then
+           is_num=1
+        else
+           is_num=0
+        fi
+
     if [ $opt = '' ]; then
       exit;
-    else
-      case $opt in
-        [1-${#mitems[@]}]) clear;
-	    m=$opt-1
-	    option_picked "$opt - ${mitems[$m]}"
-	    $edir${eitems[$m]};
-            after_exec;
-        ;;
 
+    elif (( $is_num > 0 )); then
+
+        if ((0 <= $opt && $opt <= $numitems)); then
+            clear;
+            m=$opt-1
+            option_picked "$opt - ${mitems[$m]}"
+            $edir${eitems[$m]};
+            after_exec;
+
+        else
+            clear;
+            option_picked "Pick a valid option from the menu";
+            show_menu;
+        fi
+
+    else
+      # The option was not a number
+      case $opt in
         a) clear;
             option_picked "This script will automatically generate random events at ransom interval (30 minutes max). Type <Ctrl-C> to return to menu";
             ../menu/auto;

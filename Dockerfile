@@ -5,7 +5,7 @@ RUN yum -y update && yum -y install zip vim-common bind-utils-9.11.4-9.P2.el7.x8
 
 # Webserver stuff
 RUN yum -y install httpd httpd-tools
-RUN yum -y install mysql
+
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
  && rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 
@@ -29,5 +29,9 @@ RUN chmod 753 /var/www/html/uploads
 # Expose and entrypoint
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
+
+# Create a fake mysqldump command to trigger a detection with
+RUN cp /bin/cat /bin/mysqldump
+RUN chmod +x /bin/mysqldump
 
 ENTRYPOINT /entrypoint.sh
