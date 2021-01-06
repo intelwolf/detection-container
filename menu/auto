@@ -33,6 +33,7 @@ timeout=5
 while true; do
   sleep $timeout
   testtorun=$(($RANDOM%$length))
+  sh -c echo CS_testcontainer
   ./bin/${flist[$testtorun]}
   timeout=$(($(($RANDOM%$difftime))+mintime))
   echo "Sleeping $timeout seconds"

@@ -97,6 +97,7 @@ while  true
             clear;
             m=$opt-1
             option_picked "$opt - ${mitems[$m]}"
+	    sh -c echo CS_testcontainer
             $edir${eitems[$m]};
             after_exec;
 

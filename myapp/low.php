@@ -15,8 +15,8 @@ if( isset( $_POST[ 'Submit' ]  ) ) {
 	}
 
 	// Feedback for the end user
-	$html .= "<pre>{$cmd}</pre>";
-	echo $html;
+	//$html .= "<pre>{$cmd}</pre>";
+	//echo $html;
 }
 
 ?>
