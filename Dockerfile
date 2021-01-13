@@ -11,6 +11,8 @@ COPY bin/ /home/eval/bin/
 COPY menu/* /home/menu/
 COPY myapp /var/www/html/
 
+COPY test/exec.cgi /var/www/cgi-bin/
+
 EXPOSE 80
 
 # Expose and entrypoint
