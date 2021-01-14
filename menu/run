@@ -18,8 +18,8 @@ show_menu(){
            "High - Credential Access via Credential Dumping"
            "High -$fggreen Persistance via External Remote Services"
            "High -$fggreen Malware Linux Trojan"
-           "High -$fggreen Webserver Suspicious Terminal Spawn"
-           "High -$fggreen Webserver Unexpected Child of Web Service"
+           "High -Webserver Suspicious Terminal Spawn"
+           "High -Webserver Unexpected Child of Web Service"
            "High -$fggreen Webserver Bash Reverse Shell"
            "Medium - Webserver Trigger Metasploit Payload"
            )
@@ -39,7 +39,7 @@ show_menu(){
            "Webserver_Suspicious_Terminal_Spawn.sh"
            "Webserver_Unexpected_Child_of_Web_Service.sh"
 	   "Webserver_Bash_Reverse_Shell.sh"
-           "Webserver_Trigger_Metasploit_Payload.sh"
+           "metasploit/Webserver_Trigger_Metasploit_Payload.sh"
            )
     numitems=${#mitems[@]}
 
