@@ -12,6 +12,9 @@ chmod 753 /var/www/html/uploads
 # Create a fake mysqldump command to trigger a detection with
 cp /bin/cat /bin/mysqldump
 
+# Mark as CS testcontainer
+sh -c echo CS_testcontainer starting
+
 #  Start webservices
 /usr/sbin/httpd -k start
 
